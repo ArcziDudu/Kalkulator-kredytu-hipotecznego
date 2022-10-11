@@ -2,7 +2,7 @@ package service;
 
 import model.InputData;
 
-public class PrintingServiceImpl implements PrintingService{
+public class PrintingServiceImpl implements PrintingService {
     // class with method from interface to print info on screen
     @Override
     public void printInputDataInfo(InputData inputData) {

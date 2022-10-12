@@ -24,4 +24,14 @@ public class RateAmounts {
     public BigDecimal getCapitalAmount() {
         return capitalAmount;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("RateAmounts{");
+        sb.append("rateAmount=").append(rateAmount);
+        sb.append(", interestAmount=").append(interestAmount);
+        sb.append(", capitalAmount=").append(capitalAmount);
+        sb.append('}');
+        return sb.toString();
+    }
 }

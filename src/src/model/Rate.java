@@ -30,4 +30,12 @@ public class Rate {
     public MortgageResidual getMortgageResidual() {
         return mortgageResidual;
     }
+
+    @Override
+    public String toString() {
+        String sb = "Rate{" + "rateAmounts=" + rateAmounts +
+                ", mortgageResidual=" + mortgageResidual +
+                '}';
+        return sb;
+    }
 }

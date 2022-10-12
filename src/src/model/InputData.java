@@ -60,4 +60,12 @@ public class InputData {
     public BigDecimal getInterestDisplay() {
         return wiborPercent.add(bankMarginPercent).setScale(2, RoundingMode.HALF_UP);
     }
+
+    public LocalDate getRepaymentStartDate() {
+        return repaymentStartDate;
+    }
+
+    public RateType getRateType() {
+        return rateType;
+    }
 }

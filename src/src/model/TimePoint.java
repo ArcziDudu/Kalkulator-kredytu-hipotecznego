@@ -6,12 +6,12 @@ import java.time.LocalDate;
 public class TimePoint {
     private final LocalDate date;
     private final BigDecimal year;
-    private final BigDecimal mont;
+    private final BigDecimal month;
 
-    public TimePoint(LocalDate date, BigDecimal year, BigDecimal mont) {
+    public TimePoint(LocalDate date, BigDecimal year, BigDecimal month) {
         this.date = date;
         this.year = year;
-        this.mont = mont;
+        this.month = month;
     }
 
     public LocalDate getDate() {
@@ -22,7 +22,7 @@ public class TimePoint {
         return year;
     }
 
-    public BigDecimal getMont() {
-        return mont;
+    public BigDecimal getMonth() {
+        return month;
     }
 }

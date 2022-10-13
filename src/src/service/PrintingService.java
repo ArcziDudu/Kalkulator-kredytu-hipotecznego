@@ -1,6 +1,10 @@
 package service;
 
 import model.InputData;
+import model.Rate;
+import model.Summary;
+
+import java.util.List;
 
 public interface PrintingService {
     //    constants needed for calculations and for printing information
@@ -11,9 +15,10 @@ public interface PrintingService {
     String DATE = "DATA: ";
     String MONTHS = " MIESIĘCY";
     String RATE = "RATA: ";
-    String INTEREST = "OPROCENTOWANIE: ";
+    String INTEREST = "ODSETKI: ";
     String CAPITAL = "KAPITAŁ: ";
-    String LEFT = "POZOSTAŁO: ";
+    String LEFT_AMOUNT = "POZOSTAŁA KWOTA: ";
+    String LEFT_MONTHS = "POZOSTAŁO MIESIĘCY: ";
     String MORTAGE_AMOUNT = "KWOTA KREDYTU: ";
     String MORTAGE_PERIOD = "OKRES KREDYTOWANIA: ";
 
@@ -24,4 +29,9 @@ public interface PrintingService {
 
     //method for printing information
     void printInputDataInfo(final InputData inputData);
+
+    void printRates(List<Rate> rates);
+
+
+    void printSummary(Summary summary);
 }

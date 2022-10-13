@@ -1,6 +1,7 @@
 package model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class MortgageResidual {
     private final BigDecimal amount;
@@ -12,18 +13,11 @@ public class MortgageResidual {
     }
 
     public BigDecimal getAmount() {
-        return amount;
+        return amount.setScale(2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getDuration() {
         return duration;
     }
 
-    @Override
-    public String toString() {
-        String sb = "MortgageResidual{" + "amount=" + amount +
-                ", duration=" + duration +
-                '}';
-        return sb;
-    }
 }

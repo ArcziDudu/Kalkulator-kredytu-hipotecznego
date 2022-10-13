@@ -6,5 +6,5 @@ import model.Rate;
 import java.util.List;
 
 public interface RateCalculationService {
-    List<Rate> calculate(final InputData inputData);
+    List<Rate> calculate(InputData inputData);
 }

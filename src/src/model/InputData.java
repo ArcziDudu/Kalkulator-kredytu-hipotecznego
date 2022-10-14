@@ -10,7 +10,7 @@ public class InputData {
     private LocalDate repaymentStartDate = LocalDate.of(2020, 01, 06);
     private BigDecimal wiborPercent = BigDecimal.valueOf(1.73);
     private BigDecimal amount = BigDecimal.valueOf(298000);
-    private BigDecimal monthsDuration = BigDecimal.valueOf(180);
+    private BigDecimal monthsDuration = BigDecimal.valueOf(360);
     private BigDecimal bankMarginPercent = BigDecimal.valueOf(1.9);
     private RateType rateType = RateType.CONSTANT;
 

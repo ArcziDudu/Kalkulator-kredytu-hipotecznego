@@ -15,7 +15,6 @@ public class ReferenceCalculationServiceImpl implements ReferenceCalculationServ
             return new MortgageReference(BigDecimal.ZERO, BigDecimal.ZERO);
 
         }
-
         switch (inputData.getOverpaymentReduceWay()){
             case Overpayment.REDUCE_PERIOD:
                 return new MortgageReference(inputData.getAmount(), inputData.getMonthsDuration());

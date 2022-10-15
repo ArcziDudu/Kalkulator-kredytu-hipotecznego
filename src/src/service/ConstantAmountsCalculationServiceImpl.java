@@ -4,11 +4,12 @@ import model.InputData;
 import model.Overpayment;
 import model.Rate;
 import model.RateAmounts;
+import utils.CalculationUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class ConstantAmountsCalculationServiceImpl extends calculateInterestAmount implements ConstantAmountsCalculationService{
+public class ConstantAmountsCalculationServiceImpl implements ConstantAmountsCalculationService{
     @Override
     public RateAmounts calculate(InputData inputData, Overpayment overpayment) {
         BigDecimal interestPercent = inputData.getInterestPercent();
@@ -18,7 +19,7 @@ public class ConstantAmountsCalculationServiceImpl extends calculateInterestAmou
         BigDecimal referenceAmount = inputData.getAmount();
         BigDecimal referenceDuration = inputData.getMonthsDuration();
 
-        BigDecimal interestAmount = calculateInterestAmount(referenceAmount, interestPercent);
+        BigDecimal interestAmount = CalculationUtils.calculateInterestAmount(referenceAmount, interestPercent);
         BigDecimal rateAmount = calculateConstantRateAmount(
                 q, referenceAmount, referenceDuration, interestAmount, residualAmount);
 
@@ -36,14 +37,14 @@ public class ConstantAmountsCalculationServiceImpl extends calculateInterestAmou
     BigDecimal referenceDuration = previousRate.getMortgageReference().getReferenceDuration();
 
 
-    BigDecimal interestAmount = calculateInterestAmount(residualAmount, interestPercent1);
+    BigDecimal interestAmount = CalculationUtils.calculateInterestAmount(residualAmount, interestPercent1);
     BigDecimal rateAmount = calculateConstantRateAmount(q,referenceAmount, referenceDuration, interestAmount, residualAmount);
         BigDecimal capitalAmount = calculateCapitalAmount(rateAmount, interestAmount, residualAmount);
 
         return new RateAmounts(rateAmount, interestAmount, capitalAmount, overpayment);
     }
     private BigDecimal calculateQ(BigDecimal interestPercent) {
-        return interestPercent.divide(YEAR, 10, RoundingMode.HALF_UP).add(BigDecimal.ONE);
+        return interestPercent.divide(CalculationUtils.YEAR, 10, RoundingMode.HALF_UP).add(BigDecimal.ONE);
     }
 
     private BigDecimal calculateConstantRateAmount(

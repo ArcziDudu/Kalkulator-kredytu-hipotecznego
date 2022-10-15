@@ -42,16 +42,16 @@ public class PrintingServiceImpl implements PrintingService {
 
     @Override
     public void printRates(List<Rate> rates) {
-        String format = "%4s %4s "+
-        "%4s %4s "+
-        "%4s %4s "+
-        "%4s %2s "+
-        "%4s %8s "+
-        "%7s %8s "+
-        "%7s %10s "+
-        "%7s %10s "+
-        "%7s %10s "+
-        "%7s %3s ";
+        String format = "%1s %1s| "+
+        "%4s %4s| "+
+        "%4s %2s| "+
+        "%4s %2s| "+
+        "%4s %8s| "+
+        "%7s %8s| "+
+        "%7s %6s| "+
+        "%7s %6s| "+
+        "%7s %6s| "+
+        "%7s %2s| ";
         for (Rate rate : rates) {
             String message = String.format(format,
                     RATE_NUMBER, rate.getRateNumber(),

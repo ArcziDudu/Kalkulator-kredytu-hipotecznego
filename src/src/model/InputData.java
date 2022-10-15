@@ -9,17 +9,14 @@ public class InputData {
     private static final BigDecimal PERCENT = BigDecimal.valueOf(100);
     private LocalDate repaymentStartDate = LocalDate.of(2020, 01, 06);
     private BigDecimal wiborPercent = BigDecimal.valueOf(1.73);
-    private BigDecimal amount = BigDecimal.valueOf(298000);
+    private BigDecimal amount = BigDecimal.valueOf(300000);
     private BigDecimal monthsDuration = BigDecimal.valueOf(360);
     private BigDecimal bankMarginPercent = BigDecimal.valueOf(1.9);
     private RateType rateType = RateType.CONSTANT;
 
     //integer is a month, BD is overpayment value
     private Map<Integer, BigDecimal> overpaymentSchema = Map.of(
-            5, BigDecimal.valueOf(10000),
-            6, BigDecimal.valueOf(10000),
-            7, BigDecimal.valueOf(10000),
-            8, BigDecimal.valueOf(10000)
+
     );
     //Overpayment is a class for overpayment value
     private String overpaymentReduceWay = Overpayment.REDUCE_PERIOD;

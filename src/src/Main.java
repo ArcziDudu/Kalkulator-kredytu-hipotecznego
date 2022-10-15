@@ -6,7 +6,8 @@ import java.math.BigDecimal;
 public class Main {
     public static void main(String[] args) {
         InputData inputData = new InputData()
-                .withAmount(new BigDecimal("298000")).withRateType(RateType.CONSTANT);
+                .withRateType(RateType.DECREASING)
+                .withOverpaymentReduceWay(Overpayment.REDUCE_RATE);
         PrintingService printingService = new PrintingServiceImpl();
         RateCalculationService rateCalculationService = new RateCalculationServiceImpl(
                 new TimePointServiceImpl(),

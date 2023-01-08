@@ -19,3 +19,5 @@ aby otworzyć projekt należy np:
 8 - wpisać komende java -jar myBaseName-0.0.1-SNAPSHOT.jar
 9 - podążać za instrukcjami w terminalu 
 aplikacje można również otworzyć w Intelij 
+
+W projekcie użyłem narzędzi takich jak gradle, biblioteka lombok

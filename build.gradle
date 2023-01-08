@@ -17,3 +17,12 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 }
+jar {
+    archivesBaseName = 'myBaseName'
+    manifest {
+        attributes 'Main-Class': 'pl.zajavka.mortgage.MortgageCalculator'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

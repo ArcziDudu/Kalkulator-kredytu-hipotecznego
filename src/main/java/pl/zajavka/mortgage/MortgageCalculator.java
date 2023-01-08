@@ -7,12 +7,12 @@ import pl.zajavka.mortgage.services.*;
 
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.TreeMap;
 
 public class MortgageCalculator {
 
     public static void main(String[] args) {
-
 
         Map<Integer, BigDecimal> overpaymentSchema = new TreeMap<>();
         overpaymentSchema.put(5, BigDecimal.valueOf(12000));
@@ -22,12 +22,7 @@ public class MortgageCalculator {
         overpaymentSchema.put(78, BigDecimal.valueOf(18000));
 
 
-        InputData defaultInputData = InputData.defaultInputData()
-            .withAmount(new BigDecimal("296192.11"))
-            .withMonthsDuration(BigDecimal.valueOf(360))
-            .withOverpaymentReduceWay(Overpayment.REDUCE_PERIOD)
-            .withRateType(MortgageType.DECREASING)
-            .withOverpaymentSchema(overpaymentSchema);
+
 
         PrintingService printingService = new PrintingServiceImpl();
         RateCalculationService rateCalculationService = new RateCalculationServiceImpl(
@@ -46,7 +41,20 @@ public class MortgageCalculator {
             printingService,
             SummaryServiceFactory.create()
         );
+        System.out.println("wpisz kwotę kredytu");
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()){
+            String kwota = String.valueOf(sc.nextBigDecimal());
+            System.out.println("wpisz długość spłacania (w miesiącach)");
+            String okres = String.valueOf(sc.nextBigDecimal());
 
-        mortgageCalculationService.calculate(defaultInputData);
+            InputData defaultInputData = InputData.defaultInputData()
+                    .withAmount(new BigDecimal(kwota))
+                    .withMonthsDuration(BigDecimal.valueOf(Long.parseLong(okres)))
+                    .withOverpaymentReduceWay(Overpayment.REDUCE_PERIOD)
+                    .withRateType(MortgageType.DECREASING)
+                    .withOverpaymentSchema(overpaymentSchema);
+            mortgageCalculationService.calculate(defaultInputData);
+        }
     }
 }

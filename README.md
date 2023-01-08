@@ -8,6 +8,7 @@ po czym użytkownik otrzymuje informacje: nr raty | rok | miesiac | data | wysok
 poszczególne lata oddzielone są linią przerywaną, na podstawie 12 miesięcy 
 
 
+
 aby otworzyć projekt należy np:
 1- pobrać projekt w formie zip. 
 2 - wypakować plik w wybranym folderze 

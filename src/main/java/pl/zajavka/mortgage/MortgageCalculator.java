@@ -1,9 +1,6 @@
 package pl.zajavka.mortgage;
 
 import lombok.extern.slf4j.Slf4j;
-import pl.zajavka.mortgage.model.InputData;
-import pl.zajavka.mortgage.model.MortgageType;
-import pl.zajavka.mortgage.model.Overpayment;
 import pl.zajavka.mortgage.services.*;
 
 import java.math.BigDecimal;
@@ -40,25 +37,18 @@ public class MortgageCalculator {
             printingService,
             SummaryServiceFactory.create()
         );
-        System.out.println("wpisz kwotę kredytu");
+        System.out.println("Wpisz start aby rozpocząć");
+        System.out.println("Wpisz exit aby zakończyć");
 
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
-            String kwota = String.valueOf(sc.nextBigDecimal());
-            log.info("user launched applications");
-            log.info("User entered amount");
-
-            System.out.println("wpisz długość spłacania (w miesiącach)");
-            log.info("user entered repayment length");
-            String okres = String.valueOf(sc.nextBigDecimal());
-
-            InputData defaultInputData = InputData.defaultInputData()
-                    .withAmount(new BigDecimal(kwota))
-                    .withMonthsDuration(BigDecimal.valueOf(Long.parseLong(okres)))
-                    .withOverpaymentReduceWay(Overpayment.REDUCE_PERIOD)
-                    .withRateType(MortgageType.DECREASING)
-                    .withOverpaymentSchema(overpaymentSchema);
-            mortgageCalculationService.calculate(defaultInputData);
+            String startLine = sc.nextLine();
+            switch (startLine){
+                case "start"->ApplicationService.startApplication(sc, overpaymentSchema, mortgageCalculationService);
+                case "exit"->sc.close();
+            }
         }
     }
-}
+
+    }
+

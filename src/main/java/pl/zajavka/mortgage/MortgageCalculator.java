@@ -1,5 +1,6 @@
 package pl.zajavka.mortgage;
 
+import lombok.extern.slf4j.Slf4j;
 import pl.zajavka.mortgage.model.InputData;
 import pl.zajavka.mortgage.model.MortgageType;
 import pl.zajavka.mortgage.model.Overpayment;
@@ -9,8 +10,9 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
-
+@Slf4j
 public class MortgageCalculator {
+
 
     public static void main(String[] args) {
 
@@ -20,9 +22,6 @@ public class MortgageCalculator {
         overpaymentSchema.put(28, BigDecimal.valueOf(11000));
         overpaymentSchema.put(64, BigDecimal.valueOf(16000));
         overpaymentSchema.put(78, BigDecimal.valueOf(18000));
-
-
-
 
         PrintingService printingService = new PrintingServiceImpl();
         RateCalculationService rateCalculationService = new RateCalculationServiceImpl(
@@ -42,10 +41,15 @@ public class MortgageCalculator {
             SummaryServiceFactory.create()
         );
         System.out.println("wpisz kwotę kredytu");
+
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
             String kwota = String.valueOf(sc.nextBigDecimal());
+            log.info("user launched applications");
+            log.info("User entered amount");
+
             System.out.println("wpisz długość spłacania (w miesiącach)");
+            log.info("user entered repayment length");
             String okres = String.valueOf(sc.nextBigDecimal());
 
             InputData defaultInputData = InputData.defaultInputData()
